@@ -63,9 +63,9 @@ satellitesTLE = (specialInterestSatellites , WeatherAndEarthResourcesSat , scien
 for category in satellitesTLE : 
 
     for data in category:  
-
-        file = urllib.request.urlopen(data["url"])
-        print(data["url"])
+        
+        file = urllib.request.urlopen(data["url"]) #get text from online url
+        print("getting " + data["type"]+" from " +data["url"] )
         textFile = open("C:\\Users\pc\Desktop\my projects\Satellite-tracker\jsonFiles\\tle.txt","a")
 
         for line in file : 
@@ -93,9 +93,14 @@ for category in satellitesTLE :
         data2[len(data2)-1]=data2[len(data2)-1].replace(",","")
         data2.append("]")    
 
-        jsonFile=open("C:\\Users\pc\Desktop\my projects\Satellite-tracker\jsonFiles\\"+data["type"]+".json","a")    
+        jsonFile = open("C:\\Users\pc\Desktop\my projects\Satellite-tracker\jsonFiles\\"+data["type"]+".json","w")
+        jsonFile.write("")    
+        jsonFile.close()
+        jsonFile = open("C:\\Users\pc\Desktop\my projects\Satellite-tracker\jsonFiles\\"+data["type"]+".json","a")
 
         for i in data2 : 
             jsonFile.write(i)
+        
+        print("Converting " + data["type"]+" to JSON file >>> completed \n"  )
         
         jsonFile.close()

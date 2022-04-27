@@ -1,17 +1,8 @@
+var url = "./jsonFiles/russianASATtestDebris.json";
 async function getData() {
-  const response = await fetch("spacStations.json");
+  const response = await fetch(url);
   const data = await response.json();
   console.log(data);
 }
 
-getData().catch((err) => console.error("rak bhim ya jesser!"));
-
-// fetch("./spaceStations.json")
-//   .then((response) => {
-//     return response.json();
-//   })
-
-//   .then((jsondata) => {
-//     console.log(jsondata);
-//   })
-//   .catch((err) => console.log("error"));
+getData().catch((err) => console.error("error"));

@@ -56,7 +56,7 @@ function getSattelites(json_data, color) {
   for (let i = 0; i < disasterMonitoring_data.length; i++) {
     satellitesPoints[i] = viewer.entities.add({
       position: disMonit_positionsOverTime[i],
-      point: { pixelSize: 3, color: color },
+      point: { pixelSize: 6, color: color },
     });
   }
 }
@@ -73,14 +73,12 @@ async function program() {
   var engineering = await getData("./jsonFiles/engineering.json");
   var spaceStations = await getData("./jsonFiles/spaceStations.json");
   var indianASAT = await getData("./jsonFiles/indianASATtestDebris.json");
-  var starLink = await getData("./jsonFiles/starLinktest.json");
   getSattelites(spaceStations, Cesium.Color.GREEN);
   getSattelites(disMonitoring, Cesium.Color.BLUE);
   getSattelites(education, Cesium.Color.RED);
   getSattelites(geodetic, Cesium.Color.YELLOW);
   getSattelites(engineering, Cesium.Color.GREY);
   getSattelites(indianASAT, Cesium.Color.PURPLE);
-  getSattellites(starLink, Cesium.Color.AQUA);
 }
 
 const viewer = new Cesium.Viewer("earth", {
